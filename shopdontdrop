@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Shop Bot</title>
+<style>
+	
+	body {
+		background-image: url("https://www.lovelyluckylife.com/wp-content/uploads/2019/03/how-to-make-your-own-balloon-banner-cover.jpg");
+font-family: Didot;
+font-size: larger;
+}
+
+#main {
+width: 80%;
+border: 1px gray solid;
+margin: auto;
+padding: 20px;
+background-color: lightblue;
+border-radius: 10px;
+}
+
+#header {
+margin-top: 0;
+border: 2px solid black;
+padding: 5px;
+text-align: center;
+height: 350px;
+}
+
+label {
+width: 150px;
+display: inline-block;
+vertical-align: middle;
+}
+
+input[type="radio"]{
+  vertical-align: middle;
+}
+
+button {
+display: block;
+margin-top: 40px;
+
+}
+</style>
+</head>
+<body>
+<div id="main">
+<div id="header">
+	<h1>What is the Perfect Gift for that Special Someone?</h1>
+	<h2>We Shop For You!</h2>
+	
+		<img src="https://www.giotti.net/wp-content/uploads/2020/05/present.png" alt="Present" width="175" height="200" class="center">
+	
+</div>
+<br>
+<br>
+<br>
+
+<form  id="form1">
+<p>What is the Age of the Person Receiving the Gift?</p>
+<br>
+<label><input type="radio" name="age" id="0-2" age="1" />0-2</label>
+<label><input type="radio" name="age" id="3-6" age="2" />3-6</label>
+<label><input type="radio" name="age" id="7-9" age="3" />7-9</label>
+<label><input type="radio" name="age" id="10-12" age="4" />10-12</label>
+<label><input type="radio" name="age" id="13-15" age="5" />13-15</label>
+<label><input type="radio" name="age" id="16-18" age="6" />16-18</label>
+<br>
+<br>
+<br>
+
+<p>Would they Prefer More Masculine Gifts or More Feminine Gifts?</p>
+<br>
+<label><input type="radio" name="gender" id="masculine" type="1" />Masculine</label>
+<label><input type="radio" name="gender" id="feminine" type="2" />Feminine</label>
+<label><input type="radio"  name="gender" id="both" type="3" />A Combination of Both</label>
+<br>
+<br>
+<br>
+
+<p>Are they Athletic?</p>
+<br>
+<label><input type="radio" name="sports" id="yes sport" sport="1" />They Play/like Sports</label>
+<label><input type="radio" name="sports" id="no sport" sport="2" />No</label>
+<br>
+<br>
+<br>
+
+<p>Are they into Theater?</p>
+<br>
+<label><input type="radio" name="theater" id="yes theater" theater="1" />They Like Theater</label>
+<label><input type="radio" name="theater" id="no theater" theater="2" />No</label>
+<br>
+<br>
+<br>
+
+<p>Are they Creative?</p>
+<br>
+<label><input type="radio" name="creativity" id="is creative" creative="1" />They are Creative</label>
+<label><input type="radio" name="creativity" id="not creative" creative="2" />No</label>
+<br>
+<br>
+<br>
+
+<p>What is your Price Range?</p>
+<br>
+<label><input type="radio" name="price range" id="020" price="1" />$0-$20</label>
+<label><input type="radio" name="price range" id="2140" price="2" />$21-$40</label>
+<label><input type="radio" name="price range" id="4160" price="3" />$41-60</label>
+<label><input type="radio" name="price range" id="61+" price="4" />$60+</label>
+<br>
+<br>
+<br>
+
+
+<p>Are they into Technology?</p>
+<br>
+<label><input type="radio" name="technology" id="yes tech" tech="1" />Yes</label>
+<label><input type="radio" name="technology" id="no tech" tech="2" />No</label>
+<br>
+<br>
+<br>
+
+
+</form>
+<p id="intro">Here is the link to your perfect gift:</p>
+<p id="demo"></p>
+<p id="link"></p>
+<button onclick = "finalFunction" >Submit</button> 
+<script>
+	
+	var toy1= [1, 0, 0, 0, 0, 0, 1];
+	var toy2= [2, 0, 0, 0, 0, 0, 2];
+	var toy3= [1,  2,     2,  0,  1,   0, 1];
+												var toy35=[2,  2,     2,  0,  1,   0, 1];
+	var toy4= [2, 0,   1,  2,  2,   2, 3];
+												var toy45=[3, 0,   1,  2,  2,   2, 3];
+	var toy5=[3, 2, 0, 0, 1, 1];
+	var toy6=[3,0, 0, 0, 1, 2];
+												var toy65=[4,0,0,0,1,2];
+	var toy7=[5,2,0,1,1,0];
+												var toy75=[6,2,0,1,1,0];
+	var toy8=[3,0,2,0,0,1];
+												var toy85=[4,0,2,0,0,1];
+	var toy9=[2,1,1,2,2,0,2];
+												var toy95=[3,1,1,2,2,0,2];
+	var toy10=[3,0,1,0,1,2,4];
+												var toy105=[4,0,1,0,1,2,4];
+	var toy11=[5, 0,1,0,1,2,4];
+												var toy115=[6, 0,1,0,1,2,4];
+	var toy12=[3,0,1,2,2,2,1];
+												var toy125=[4,0,1,2,2,2,1];
+	var toy13=[3,2,2,2,1,0,1];
+												var toy135=[4,2,2,2,1,0,1];
+	var toy14=[5,0,0,2,1,1,2];
+												var toy145=[6,0,0,2,1,1,2];
+	var toy15=[5,1,0,0,1,1,2];
+												var toy155=[6,1,0,0,1,1,2];
+												var toy156=[5,2,0,0,1,1,2];
+												var toy157=[6,2,0,0,1,1,2];
+	var toy16=[5,1,0,0,1,1,3];
+												var toy165=[6,1,0,0,1,1,3];
+												var toy166=[5,2,0,0,1,1,3];
+												var toy167=[6,2,0,0,1,1,3];
+var key=[0,0,0,0,0,0,0];
+myFunction();
+function finalFunction(){
+if (document.getElementById("0-2").checked) {
+key[0]=1;
+}if (document.getElementById("3-6").checked) {
+key[0]=2;
+}if (document.getElementById("7-9").checked) {
+key[0]=3;
+}if (document.getElementById("10-12").checked) {
+key[0]=4;
+}if (document.getElementById("13-15").checked) {
+key[0]=5;
+}if (document.getElementById("16-18").checked) {
+key[0]=6;
+}if (document.getElementById("masculine").checked) {
+key[1]=1;
+}if (document.getElementById("feminine").checked) {
+key[1]=2;
+}if (document.getElementById("both").checked) {
+key[1]=3;
+}if (document.getElementById("yes sport").checked) {
+key[2]=1;
+}if (document.getElementById("no sport").checked) {
+key[2]=2;
+}if (document.getElementById("yes theater").checked) {
+key[3]=1;
+}if (document.getElementById("no theater").checked) {
+key[3]=2;
+}if (document.getElementById("is creative").checked) {
+key[4]=1;
+}if (document.getElementById("not creative").checked) {
+key[4]=2;
+}if (document.getElementById("yes tech").checked) {
+key[5]=1;
+}if (document.getElementById("no tech").checked) {
+key[5]=1;
+}if (document.getElementById("020").checked) {
+key[6]=1;
+}if (document.getElementById("2140").checked) {
+key[6]=2;
+}if (document.getElementById("4160").checked) {
+key[6]=3;
+}if (document.getElementById("61+").checked) {
+key[6]=4;
+}
+//var key = [age, type, sport, theater, creative, tech, price]
+	var match1=0;
+	var match2=0;
+	var match3=0;
+	var match35=0;
+	var match4=0;
+	var match45=0;
+	var match5=0;
+	var match6=0;
+	var match65=0;
+	var match7=0;
+	var match75=0;
+	var match8=0;
+	var match75=0;
+	var match9=0;
+	var match95=0;
+	var match10=0;
+	var match105=0;
+	var match11=0;
+	var match115=0;
+	var match12=0;
+	var match125=0;
+	var match13=0;
+	var match135=0;
+	var match145=0;
+	var match15=0;
+	var match155=0;
+	var match156=0;
+	var match157=0;
+	var match16=0;
+	var match165=0;
+	var match166=0;
+	var match167=0;
+	var matchkey= []
+findHighest(matchkey);
+allMatches();
+findLink(matchkey, checkHighest);
+var myElement= document.getElementById("element");
+alert("You're best present can be found at:" + bestGift)
+
+console.log(key)
+var finalAnswer = document.getElementbyId("link")
+document.getElementbyId("demo").innerHTML = myElement.innerHTML + finalAnswer.innerHTML
+}
+function findHighest(matchkey){
+var checkHighest = 0
+for (i=0;i<(matchkey.length()-1);i++){
+	if(matchkey[i]>checkHighest){
+		 checkHighest=matchkey[i+1]
+		}}
+	return checkHighest}
+function checkmatchvalue(toy, match, key){
+	for (i=0; i< toy.length;i++){
+		if (toy[i]==key[i]){
+			match+=1;
+		}
+	}
+	matchkey.push(match);
+}
+function findLink(matchkey, checkHighest){
+var highLocation = matchkey.indexOf(checkHighest)
+var bestMatch;
+
+if (highLocation==0){
+	bestMatch = "https://www.amazon.com/dp/B07X8Z14P8?linkCode=ogi&tag=goodhousekeeping_auto-append-20&ascsubtag=[artid|10055.g.31132135[src|[ch|[lt|"
+}if (highLocation==1){
+	bestMatch = "https://www.personalcreations.com/product/-30239002?REF=PCRFeedGooglePLA_PID_30239002&ssid=4&cobrand=PCR&cvosrc=pla.google.30239002&adpos=&scid=scplp30011932&sc_intid=30011932&prid=pla25&gclsrc=aw.ds&gclid=CjwKCAjwrKr8BRB_EiwA7eFapk7Cyole0DIOjnd_DLK6IQPSj2r-9iAyZI4aWsUJvIbK8Cci3CMHEBoCg3IQAvD_BwE"
+}if (highLocation==2){
+	bestMatch = "https://www.walmart.com/ip/CurliGirls-Hayli-the-Ballerina-Hairstyling-Doll-with-MagiCurl-Hair-Style-Again-and-Again-Ages-3/126615888?irgwc=1&sourceid=imp_TTd05WxzUxyLRPKwUx0Mo38cUkEx1-xGx2zp0s0&veh=aff&wmlspartner=imp_10078&clickid=TTd05WxzUxyLRPKwUx0Mo38cUkEx1-xGx2zp0s0&sharedid=goodhousekeeping.com"
+}if (highLocation==3){
+	bestMatch = "https://www.walmart.com/ip/CurliGirls-Hayli-the-Ballerina-Hairstyling-Doll-with-MagiCurl-Hair-Style-Again-and-Again-Ages-3/126615888?irgwc=1&sourceid=imp_TTd05WxzUxyLRPKwUx0Mo38cUkEx1-xGx2zp0s0&veh=aff&wmlspartner=imp_10078&clickid=TTd05WxzUxyLRPKwUx0Mo38cUkEx1-xGx2zp0s0&sharedid=goodhousekeeping.com"
+}if (highLocation==4){
+	bestMatch = "https://www.bedbathandbeyond.com/store/product/gymnic-rody-reg-horse/3330844?skuId=62093262&enginename=google&mcid=PS_googlepla_nonbrand_outdoorutility_online&product_id=62093262&adtype=pla&product_channel=online&adpos=&creative=223916883505&device=c&matchtype=&network=g&rkg_id=0&utm_campaignid=71700000037210659&utm_adgroupid=58700004139975795&targetid=92700035907275407&gclid=CjwKCAjwrKr8BRB_EiwA7eFapqIkbSOLqu8GSIU_gLjkOJ0flCd1L5rfWV7FLU3MqE0X-stwFR_O3BoC9yoQAvD_BwE&gclsrc=aw.ds"
+}if (highLocation==5){
+	bestMatch = "https://www.bedbathandbeyond.com/store/product/gymnic-rody-reg-horse/3330844?skuId=62093262&enginename=google&mcid=PS_googlepla_nonbrand_outdoorutility_online&product_id=62093262&adtype=pla&product_channel=online&adpos=&creative=223916883505&device=c&matchtype=&network=g&rkg_id=0&utm_campaignid=71700000037210659&utm_adgroupid=58700004139975795&targetid=92700035907275407&gclid=CjwKCAjwrKr8BRB_EiwA7eFapqIkbSOLqu8GSIU_gLjkOJ0flCd1L5rfWV7FLU3MqE0X-stwFR_O3BoC9yoQAvD_BwE&gclsrc=aw.ds"
+}if (highLocation==6){
+	bestMatch = "https://www.target.com/p/lego-dots-rainbow-jewelry-stand-41905-cool-diy-craft-decorations-toy-kit-213pc/-/A-76555816"
+}
+if (highLocation==7){
+	bestMatch = "https://www.michaels.com/100-piece-kids-art-set-by-creatology/10152571.html?r=g&cm_mmc=PLASearch-_-google-_-MICH_Shopping_US_N_Kids_N_Smart_BOPIS_N-_-&Kenshoo_ida=&kpid=go_cmp-9638984798_adg-99988418355_ad-425991104288_pla-917371749050_dev-c_ext-_prd-10152571&gclid=CjwKCAjwrKr8BRB_EiwA7eFapvfKaGY2jqjO7kYKjYYdNOwQLNKGyaD3d2E1ffMb3U_J0Lx5FIzOeBoCpiUQAvD_BwE"
+}if (highLocation==8){
+	bestMatch = "https://www.michaels.com/100-piece-kids-art-set-by-creatology/10152571.html?r=g&cm_mmc=PLASearch-_-google-_-MICH_Shopping_US_N_Kids_N_Smart_BOPIS_N-_-&Kenshoo_ida=&kpid=go_cmp-9638984798_adg-99988418355_ad-425991104288_pla-917371749050_dev-c_ext-_prd-10152571&gclid=CjwKCAjwrKr8BRB_EiwA7eFapvfKaGY2jqjO7kYKjYYdNOwQLNKGyaD3d2E1ffMb3U_J0Lx5FIzOeBoCpiUQAvD_BwE"
+}
+if (highLocation==9){
+	bestMatch = "https://www.amazon.com/dp/B07W5GV2WD?linkCode=ogi&tag=goodhousekeeping_auto-append-20&ascsubtag=[artid|10055.g.31132135[src|[ch|[lt|sale"
+}if (highLocation==10){
+	bestMatch = "https://www.amazon.com/dp/B07W5GV2WD?linkCode=ogi&tag=goodhousekeeping_auto-append-20&ascsubtag=[artid|10055.g.31132135[src|[ch|[lt|sale"
+}
+if (highLocation==11){
+	bestMatch = "https://www.inspireuplift.com/Remote-Control-Wall-Climbing-Car/iu/700"
+}if (highLocation==12){
+	bestMatch = "https://www.inspireuplift.com/Remote-Control-Wall-Climbing-Car/iu/700"
+}if (highLocation==13){
+	bestMatch = "https://www.amazon.com/dp/B07XV2X68R?linkCode=ogi&tag=goodhousekeeping_auto-append-20&ascsubtag=[artid|10055.g.31132135[src|[ch|[lt|"
+}if (highLocation==14){
+	bestMatch = "https://www.amazon.com/dp/B07XV2X68R?linkCode=ogi&tag=goodhousekeeping_auto-append-20&ascsubtag=[artid|10055.g.31132135[src|[ch|[lt|5"
+}if (highLocation==15){
+	bestMatch = "https://www.hearthsong.com/p/730909?aff=10051&CATARGETID=530007750000045252&CADevice=c&gclid=CjwKCAjwrKr8BRB_EiwA7eFapm70nvVeeUdql2Mp-1SIWKWQRfbXbbib-bNSjbsSpvlg_aWVhntNVxoCAf8QAvD_BwE"
+}if (highLocation==16){
+	bestMatch = "https://www.hearthsong.com/p/730909?aff=10051&CATARGETID=530007750000045252&CADevice=c&gclid=CjwKCAjwrKr8BRB_EiwA7eFapm70nvVeeUdql2Mp-1SIWKWQRfbXbbib-bNSjbsSpvlg_aWVhntNVxoCAf8QAvD_BwE"
+}if (highLocation==17){
+	bestMatch = "https://www.amazon.com/dp/B086B89SB4?linkCode=ogi&tag=goodhousekeeping_auto-append-20&ascsubtag=[artid|10055.g.31132135[src|[ch|[lt|"
+}if (highLocation==18){
+	bestMatch = "https://www.amazon.com/dp/B086B89SB4?linkCode=ogi&tag=goodhousekeeping_auto-append-20&ascsubtag=[artid|10055.g.31132135[src|[ch|[lt|"
+}if (highLocation==19){
+	bestMatch = "https://www.kidswhs.com/toilet-trouble-game/"
+}if (highLocation==20){
+	bestMatch = "https://www.kidswhs.com/toilet-trouble-game/"
+}if (highLocation==21){
+	bestMatch = "https://www.target.com/p/rainbow-jellies-surprise-creation-kit/-/A-79405074"
+}if (highLocation==22){
+	bestMatch = "https://www.target.com/p/rainbow-jellies-surprise-creation-kit/-/A-79405074"
+}if (highLocation==23){
+	bestMatch = "https://www.apple.com/shop/product/MWVG2ZM/A/iphone-11-clear-case?afid=p238%7CsqAXBmN8N-dc_mtid_1870765e38482_pcrid_349214255952_pgrid_76122849568_&cid=aos-us-kwgo-pla-btb--slid---product-MWVG2ZM/A"
+}if (highLocation==24){
+	bestMatch = "https://www.apple.com/shop/product/MWVG2ZM/A/iphone-11-clear-case?afid=p238%7CsqAXBmN8N-dc_mtid_1870765e38482_pcrid_349214255952_pgrid_76122849568_&cid=aos-us-kwgo-pla-btb--slid---product-MWVG2ZM/A"
+}if (highLocation==25){
+	bestMatch = "https://www.sparkfun.com/products/15446?src=raspberrypi"
+}if (highLocation==26){
+	bestMatch = "https://www.sparkfun.com/products/15446?src=raspberrypi"
+}if (highLocation==27){
+	bestMatch = "https://www.sparkfun.com/products/15446?src=raspberrypi"
+}if (highLocation==28){
+	bestMatch = "https://www.sparkfun.com/products/15446?src=raspberrypi"
+}if (highLocation==29){
+	bestMatch = "https://www.amazon.com/Educational-Insights-Artie-Coding-Robot/dp/B07MG8GBCX?ref_=bl_dp_s_web_2591107011"
+}if (highLocation==2){
+	bestMatch = "https://www.amazon.com/Educational-Insights-Artie-Coding-Robot/dp/B07MG8GBCX?ref_=bl_dp_s_web_2591107011"
+}if (highLocation==30){
+	bestMatch = "https://www.amazon.com/Educational-Insights-Artie-Coding-Robot/dp/B07MG8GBCX?ref_=bl_dp_s_web_2591107011"
+}if (highLocation==31){
+	bestMatch = "https://www.amazon.com/Educational-Insights-Artie-Coding-Robot/dp/B07MG8GBCX?ref_=bl_dp_s_web_2591107011"
+}
+return bestMatch}
+
+function allMatches(){
+	checkmatchvalue(toy1,match1, key)
+checkmatchvalue(toy2,match2, key)
+checkmatchvalue(toy3,match3, key)
+checkmatchvalue(toy35,match35, key)
+checkmatchvalue(toy4,match4, key)
+checkmatchvalue(toy45,match45, key)
+checkmatchvalue(toy5,match5, key)
+checkmatchvalue(toy6,match6, key)
+checkmatchvalue(toy65,match65, key)
+checkmatchvalue(toy7,match7, key)
+checkmatchvalue(toy75,match75, key)
+checkmatchvalue(toy8,match8, key)
+checkmatchvalue(toy85,match85, key)
+checkmatchvalue(toy9,match9, key)
+checkmatchvalue(toy95,match95, key)
+checkmatchvalue(toy10,match10, key)
+checkmatchvalue(toy105,match105, key)
+checkmatchvalue(toy11,match11, key)
+checkmatchvalue(toy115,match115, key)
+checkmatchvalue(toy12,match12, key)
+checkmatchvalue(toy125,match125, key)
+checkmatchvalue(toy13,match13, key)
+checkmatchvalue(toy135,match135, key)
+checkmatchvalue(toy14,match14, key)
+checkmatchvalue(toy145,match145, key)
+checkmatchvalue(toy15,match15, key)
+checkmatchvalue(toy155,match155, key)
+checkmatchvalue(toy156,match156, key)
+checkmatchvalue(toy157,match157, key)
+checkmatchvalue(toy16,match16, key)
+checkmatchvalue(toy165,match165, key)
+checkmatchvalue(toy166,match166, key)
+checkmatchvalue(toy167,match167, key)
+}
+	
+</script>
+
+</body>
+<footer>&copy; Copyright 2020 OwlHacks</footer>
+</html>
